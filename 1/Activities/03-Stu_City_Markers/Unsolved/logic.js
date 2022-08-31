@@ -15,11 +15,56 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(myMap);
 
 // City markers
+var cities = [{
+  location: [40.7128, -74.0059],
+  name: "New York",
+  population: "8,380,000"
 
+},
+{
+  location: [41.881832, -87.623177],
+  name: "Chicago",
+  population: "2,699,000"
+
+},
+{
+  location: [29.7604, -95.3698],
+  name: "Houston",
+  population: "2,313,000"
+
+},
+{
+  location: [34.0522, -118.2437],
+  name: "LA",
+  population: "3,973,000"
+
+},
+{
+  location: [41.2565, -95.9345],
+  name: "Omaha",
+  population: "479,529"
+
+},
+]
+
+// console.log(cities)
 // Add code to create a marker for each city below and add it to the map
 
 // newyork;
 // chicago;
-// houston;
-// la;
-// omaha;
+// houston; 29.7604, -95.3698 2,313,000
+// la; 34.0522, -118.2437 3,973,000
+// omaha; 41.2565, -95.9345 479,529
+
+// Loop through the cities array
+// for (var i=0; i < cities.length; i++){
+  
+// }
+
+// Loop using forEach()
+cities.forEach(function(city) {
+  console.log(city),
+  L.marker(city.location).bindPopup(),
+  radius = city.population/200000,
+  color = "red"
+  .addTo(myMap)});

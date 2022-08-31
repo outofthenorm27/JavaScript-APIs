@@ -1,7 +1,7 @@
 // Create a map object
 var myMap = L.map("map", {
   center: [37.09, -95.71],
-  zoom: 5
+  zoom: 4
 });
 
 // Add a tile layer
@@ -18,27 +18,27 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var cities = [{
   location: [40.7128, -74.0059],
   name: "New York",
-  population: "8,550,405"
+  population: 8550405
 },
 {
   location: [41.8781, -87.6298],
   name: "Chicago",
-  population: "2,720,546"
+  population: 2720546
 },
 {
   location: [29.7604, -95.3698],
   name: "Houston",
-  population: "2,296,224"
+  population: 2296224
 },
 {
   location: [34.0522, -118.2437],
   name: "Los Angeles",
-  population: "3,971,883"
+  population: 3971883
 },
 {
   location: [41.2524, -95.9980],
   name: "Omaha",
-  population: "446,599"
+  population: 446599
 }
 ];
 
@@ -50,9 +50,27 @@ var cities = [{
 //     .addTo(myMap);
 // }
 
+// for (var i = 0; i < cities.length; i++) {
+//   var city = cities[i];
+//   console.log(city.population);
+//   L.circle(city.location,{
+//     radius: city.population/25,
+//     color: 'red'
+//   })
+//     .bindPopup("<h1>" + city.name + "</h1> <hr> <h3>Population " + city.population + "</h3>")
+//     .addTo(myMap);
+// }
+
 // Bonus
 // User forEach to Loop through the cities array and create one marker for each city, bind a popup containing its name and population add it to the map
-cities.forEach(city =>   L.marker(city.location)
+// cities.forEach(city =>   L.marker(city.location)
+// .bindPopup("<h1>" + city.name + "</h1> <hr> <h3>Population " + city.population + "</h3>")
+// .addTo(myMap)
+// );
+cities.forEach(city =>   L.circle(city.location,{
+  radius: city.population/25,
+  color: 'blue'
+})
 .bindPopup("<h1>" + city.name + "</h1> <hr> <h3>Population " + city.population + "</h3>")
 .addTo(myMap)
 );
