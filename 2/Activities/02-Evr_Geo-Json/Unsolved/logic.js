@@ -7,25 +7,35 @@ d3.json(queryUrl, function(data) {
   console.log(data.features);
 
   // 1. Send the data.features object to the createFeatures function 
+  createFeatures(data.features);
 
 });
 
 //  2. Create the createFeatures function to hold the data.features object
-
+function createFeatures(earthquakeData) {
     // 3. Define a function we want to run once for each feature in the features array
     // 4. Give each feature a popup describing the place and time of the earthquake
+    function onEachFeature(feature, layer){
+      layer.bindPopup(feature.properties.place + 
+        "<hr><p>" + new Date(feature.properties.time);
+    }
 
 
 
     // 5. Create a GeoJSON layer containing the features array on the earthquakeData object
     // 6. Run the onEachFeature function once for each piece of data in the array
+    var earthquakes = L.geoJSON(earthquakeData,{
+      onEachFeature: onEachFeature
+    });
 
 
     // 7. Send the earthquakes layer to the createMap function
+    createMap(earthquakes)
 
 
 //  8. Create the createMap function to hold 
 // the map layers, basemaps, overlay object, map object, and layer control.
+function createMap(earthquakesMap)
 
 // Define streetmap and darkmap layers
 var streetmap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
