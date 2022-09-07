@@ -57,14 +57,7 @@ var cities = [{
 // omaha; 41.2565, -95.9345 479,529
 
 // Loop through the cities array
-// for (var i=0; i < cities.length; i++){
-  
-// }
-
-// Loop using forEach()
-cities.forEach(function(city) {
-  console.log(city),
-  L.marker(city.location).bindPopup(),
-  radius = city.population/200000,
-  color = "red"
-  .addTo(myMap)});
+cities.forEach(city =>   L.marker(city.location)
+.bindPopup("<h1>" + city.name + "</h1> <hr> <h3>Population " + city.population + "</h3>")
+.addTo(myMap)
+);

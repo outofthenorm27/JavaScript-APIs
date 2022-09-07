@@ -1,7 +1,7 @@
 // Create a map object
 var myMap = L.map("map", {
   center: [37.09, -95.71],
-  zoom: 4
+  zoom: 4.5
 });
 
 // Add a tile layer
@@ -67,6 +67,8 @@ var cities = [{
 // .bindPopup("<h1>" + city.name + "</h1> <hr> <h3>Population " + city.population + "</h3>")
 // .addTo(myMap)
 // );
+
+// Use forEach to Loop through the cities array and create circle markers and bind a popup
 cities.forEach(city =>   L.circle(city.location,{
   radius: city.population/25,
   color: 'blue'
